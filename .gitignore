@@ -1,0 +1,7 @@
+#管理したくないファイル
+.out
+.DS_Store
+.swp
+
+#例外
+!.gitignore
