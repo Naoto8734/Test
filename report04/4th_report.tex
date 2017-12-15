@@ -1,0 +1,52 @@
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{otf}	%日本語化
+\usepackage[dvipdfmx]{hyperref}	%ハイパーリンク
+\usepackage{pxjahyper}	%ハイパーリンク
+\usepackage{bm}	%数式太字
+\usepackage{listings,jlisting}	%プログラム埋め込み
+
+\lstset{
+	language={C}, %プログラム言語
+	basicstyle={\ttfamily\small}, %書体の指定
+	frame=tRBl, %フレームの指定
+	framesep=10pt, %フレームと中身（コード）の間隔
+	breaklines=true, %行が長くなった場合の改行
+	linewidth=12cm, %フレームの横幅
+	lineskip=-0.5ex, %行間の調整
+	tabsize=2, %Tabを何文字幅にするかの指定
+	numbers=left, %行番号を表示
+	numbersep=20pt
+}
+
+\title{第4回 プログラミング応用レポート}
+\author{15302114番　山下尚人}
+\date{提出日：2017年12月15日}
+
+\begin{document}
+\maketitle%タイトル
+
+\section{構造体のプログラム}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex84.c} 
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+文房具のストック
+	消しゴム	15
+	クリップ	200
+	のり	18
+	えんぴつ	55
+	付箋紙	30
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		4〜7行目で構造体のstationary\_stock型を作成している。
+		11行目で構造体の配列trayを作成している。
+		13〜17と19〜23行目で、配列trayの各要素のメンバにデータを代入している。
+		27〜30行目で配列trayの要素のメンバーを順番に表示している。
+	\end{itemize}
+	%\newpage	%改ページ
+
+\end{document}

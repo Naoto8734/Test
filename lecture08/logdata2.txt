@@ -1,0 +1,5 @@
+
+[myuser@linux01 8th_lecture]$ ls
+a.out  ex103.c  exdata1.dat
+[myuser@linux01 8th_lecture]$ ./a.out
+SUM=2007, AVE=167.25 

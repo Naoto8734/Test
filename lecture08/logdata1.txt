@@ -1,0 +1,4 @@
+[myuser@linux01 8th_lecture]$ ls
+a.out  ex103.c
+[myuser@linux01 8th_lecture]$ ./a.out
+File not found. --- exdata1.dat

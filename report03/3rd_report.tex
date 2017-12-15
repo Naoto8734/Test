@@ -1,0 +1,87 @@
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{otf}	%日本語化
+\usepackage[dvipdfmx]{hyperref}	%ハイパーリンク
+\usepackage{pxjahyper}	%ハイパーリンク
+\usepackage{bm}	%数式太字
+\usepackage{listings,jlisting}	%プログラム埋め込み
+
+\lstset{
+	language={C}, %プログラム言語
+	basicstyle={\ttfamily\small}, %書体の指定
+	frame=tRBl, %フレームの指定
+	framesep=10pt, %フレームと中身（コード）の間隔
+	breaklines=true, %行が長くなった場合の改行
+	linewidth=12cm, %フレームの横幅
+	lineskip=-0.5ex, %行間の調整
+	tabsize=2, %Tabを何文字幅にするかの指定
+	numbers=left, %行番号を表示
+	numbersep=20pt
+}
+
+\title{第3回 プログラミング応用レポート}
+\author{15302114番　山下尚人}
+\date{提出日：2017年12月15日}
+
+\begin{document}
+\maketitle%タイトル
+
+\section{構造体のプログラム}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex81.c} 
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+NAME         BIRTHDAY   ZIP     ADDRESS                        TEL
+Hinako       19890225   1234567 Yokohama-shi Kanagawa Pref.    045-123-4567
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		5〜11行目で構造体のroll型を作成し、roll型変数my\_dataを宣言している。
+		13〜17行目で構造体変数my\_dataのメンバに実際のデータを代入している。
+		18,20行目で構造体に代入された各メンバのデータを表示している。
+	\end{itemize}
+	%\newpage	%改ページ
+
+
+\section{関数の値参照（call-by-value）}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex73.c}
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+x=5	y=3
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		3行目でプロトタイプ宣言をし、15〜21行目でvoid型swap関数を定義している。
+		swap関数は変数a,bを入力されたら、関数内で変数a,bの値の入れ替えを行っている。
+		6〜9行目で変数x,yを関数swapに入力している。\\
+		ここでswap関数にはx,yの値だけが渡され、関数内で変数a,bの値を入れ替えたとしても、変数x,yの値とは関係がない。
+		よって、実行結果には変数x,yの値が初期値のまま出力される。
+	\end{itemize}
+	\newpage	%改ページ
+
+
+\section{関数の名前参照（call-by-name）}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex74.c}
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+x=3	y=5
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		3行目でプロトタイプ宣言をし、15〜21行目でvoid型swap関数を定義している。
+		swap関数は間接演算子によりアドレスの指し示している値a,bが入力される。
+		18〜20行目で入力されたアドレスの指し示した値自体を入れ替えを行っている。
+		6〜9行目で変数x,yを関数swapに入力している。\\
+		ここでswap関数にはアドレス演算子により、x,yのアドレスが渡される。
+		関数内でアドレスの指し示す値自体が入れ替えられるので、x,yのアドレスが指し示す値も書き換えられる。
+		よって、実行結果には変数x,yの値が入れ替えられて出力される。
+	\end{itemize}
+\end{document}

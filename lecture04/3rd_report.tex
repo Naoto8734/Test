@@ -1,0 +1,46 @@
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{otf}	%日本語化
+\usepackage[dvipdfmx]{hyperref}	%ハイパーリンク
+\usepackage{pxjahyper}	%ハイパーリンク
+\usepackage{bm}	%数式太字
+\usepackage{listings}	%プログラム埋め込み
+
+\lstset{
+	language={C}, %プログラム言語
+	basicstyle={\ttfamily\small}, %書体の指定
+	frame=tRBl, %フレームの指定
+	framesep=10pt, %フレームと中身（コード）の間隔
+	breaklines=true, %行が長くなった場合の改行
+	linewidth=12cm, %フレームの横幅
+	lineskip=-0.5ex, %行間の調整
+	tabsize=2, %Tabを何文字幅にするかの指定
+	numbers=left, %行番号を表示
+	numbersep=20pt
+}
+
+\title{第回 プログラミング応用レポート}
+\author{15302114番　山下尚人}
+\date{提出日：2017年月日}
+
+\begin{document}
+\maketitle%タイトル
+
+\section{構造体のプログラム}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex81.c} 
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+NAME         BIRTHDAY   ZIP     ADDRESS                        TEL
+Hinako       19890225   1234567 Yokohama-shi Kanagawa Pref.    045-123-4567
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		行目で構造体の作成。
+		行目で。
+	\end{itemize}
+	\newpage	%改ページ
+
+\end{document}

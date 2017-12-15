@@ -1,0 +1,20 @@
+[myuser@linux01 8th_lecture]$ ls
+a.out  ex103.c  ex104.c  exdata1.dat  logdata1.txt  logdata2.txt  out.dat
+[myuser@linux01 8th_lecture]$ ./a.out
+debug
+[myuser@linux01 8th_lecture]$ ls
+a.out    ex104.c      logdata1.txt  out.dat
+ex103.c  exdata1.dat  logdata2.txt  sample.dat
+[myuser@linux01 8th_lecture]$ cat sample.dat
+But, if you do your best,
+you will manage.
+[myuser@linux01 8th_lecture]$ ./a.out
+debug
+[myuser@linux01 8th_lecture]$ ls
+a.out    ex104.c      logdata1.txt  out.dat
+ex103.c  exdata1.dat  logdata2.txt  sample.dat
+[myuser@linux01 8th_lecture]$ cat sample.dat
+But, if you do your best,
+you will manage.
+But, if you do your best,
+you will manage.

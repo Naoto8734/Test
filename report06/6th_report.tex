@@ -1,0 +1,78 @@
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{otf}	%日本語化
+\usepackage[dvipdfmx]{hyperref}	%ハイパーリンク
+\usepackage{pxjahyper}	%ハイパーリンク
+\usepackage{bm}	%数式太字
+\usepackage{listings}	%プログラム埋め込み
+
+\lstset{
+	language={C}, %プログラム言語
+	basicstyle={\ttfamily\small}, %書体の指定
+	frame=tRBl, %フレームの指定
+	framesep=10pt, %フレームと中身（コード）の間隔
+	breaklines=true, %行が長くなった場合の改行
+	linewidth=12cm, %フレームの横幅
+	lineskip=-0.5ex, %行間の調整
+	tabsize=2, %Tabを何文字幅にするかの指定
+	numbers=left, %行番号を表示
+	numbersep=20pt
+}
+
+\title{第6回 プログラミング応用レポート}
+\author{15302114番　山下尚人}
+\date{提出日：2017年12月15日}
+
+\begin{document}
+\maketitle%タイトル
+
+\section{ファイル入出力(ex101.c)}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex101.c} 
+		\mbox{}\newline
+	\item 入力データファイル(exdata.dat)
+		\lstinputlisting{exdata.dat} 
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+Input file name >>>exdata.dat
+SUM=2007 AVE=167.25
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		 11〜16行目で標準入力から入力された文字列のファイルを、FILE型変数fpに読み込んでいる。
+		入力された文字列は、8行目で宣言されたchar型変数FileNameに、12行目のscanfにより読み込んでいる。
+		読み込みに失敗した場合、15行目でプログラムを異常終了している。\\
+		 18〜24行目でfpから1行ずつデータを読み込み、int型変数sumに加算している。
+		 0の行が現れたら、21行目のbreakによりforループを終了している。
+		  26〜28行目では、データを合計した結果と、平均を標準出力に出力している。
+	\end{itemize}
+	\newpage	%改ページ
+
+\section{ファイル入出力(ex102.c)}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex102.c} 
+		\mbox{}\newline
+	\item 入力データファイル(exdata1.dat)
+		\lstinputlisting{exdata1.dat} 
+		\mbox{}\newline
+		exdata.dataの最終行の0を削除してある
+	\item 実行結果
+		\begin{lstlisting}
+Input file name >>>exdata1.dat
+SUM=2007 AVE=167.25
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		11〜16行目で標準入力から入力された文字列のファイルを、FILE型変数fpに読み込んでいる。
+		入力された文字列は、8行目で宣言されたchar型変数FileNameに、12行目のscanfにより読み込んでいる。
+		読み込みに失敗した場合、15行目でプログラムを異常終了している。\\
+		19〜22行目のwhileループで、1行ずつファイルのデータを読み込み、int型変数sumに加算している。
+		19行目のwhileの条件では、読み込んだ値valがEOFの時、whileループが終了する。
+	\end{itemize}
+	\newpage	%改ページ
+
+
+\end{document}

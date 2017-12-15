@@ -1,0 +1,74 @@
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{otf}	%日本語化
+%\usepackage[dvipdfmx]{hyperref}	%ハイパーリンク
+%\usepackage{pxjahyper}	%ハイパーリンク
+\usepackage{bm}	%数式太字
+\usepackage{listings}	%プログラム埋め込み
+
+\lstset{
+	language={C}, %プログラム言語
+	basicstyle={\ttfamily\small}, %書体の指定
+	frame=tRBl, %フレームの指定
+	framesep=10pt, %フレームと中身（コード）の間隔
+	breaklines=true, %行が長くなった場合の改行
+	linewidth=12cm, %フレームの横幅
+	lineskip=-0.5ex, %行間の調整
+	tabsize=2, %Tabを何文字幅にするかの指定
+	numbers=left, %行番号を表示
+	numbersep=20pt
+}
+
+\title{第回 プログラミング応用レポート}
+\author{15302114番　山下尚人}
+\date{提出日：2017年12月8日}
+
+\begin{document}
+\maketitle%タイトル
+
+\section{構造体の配列}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex84.c} 
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+Please input No, x, y.
+1 1 2
+2 0 0
+3 9 9
+4 5 5
+5 7 2
+最も離れた座席は2と3です。（距離：12.727922）
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		7~11行目で構造体のseat\_position型を宣言し、MAX\_SEAT個の配列seatを宣言している。\\
+		21~23行目で構造体の配列seatに標準入力からの値を、配列の各要素にアドレス演算子を用いて記録している。\\
+		25~36行目で2重のfor文を用いて、seatの各要素を総当たりで2つずつ呼び出して、距離disを計算している。\\
+		計算した距離disは30行目で前回までの最大値max\_disと比較し、最大値を更新している。\\
+		32,33行目で最大値となった座標の番号を配列max\_dis\_seatに記録している。\\
+		38行目で、2重forループを抜けた後の距離の最大値と、その番号を結果として表示している。\\
+	\end{itemize}
+	\newpage	%改ページ
+
+\section{アロー演算子，構造体を引数として渡す関数}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex91.c} 
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+x = 10, y=2.000000e+01
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		4~7行目で構造体のtag型を宣言し、tag型の変数sampleを宣言している。\\
+		9行目でtag型の変数pを間接演算子をつけて宣言している。\\
+		11行目では、アドレス演算子を用いて変数sampleのアドレスを、pに代入している。\\
+		12,13行目では、アロー演算子を用いて、tag型構造体pの内部の変数x,yのアドレスにそれぞれ数値を代入している。
+		ここで、pはsampleのアドレスが代入されているので、sampleのアドレスと同義となる。
+	\end{itemize}
+	\newpage	%改ページ
+
+\end{document}
