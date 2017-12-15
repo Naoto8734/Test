@@ -1,1 +1,1 @@
-../programming_adv_c/7th_lecture/ex101.c
+../lecture07/ex101.c
