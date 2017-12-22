@@ -1,0 +1,61 @@
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{otf}	%日本語化
+\usepackage[dvipdfmx]{hyperref}	%ハイパーリンク
+\usepackage{pxjahyper}	%ハイパーリンク
+\usepackage{bm}	%数式太字
+\usepackage{listings}	%プログラム埋め込み
+
+\lstset{
+	language={C}, %プログラム言語
+	basicstyle={\ttfamily\small}, %書体の指定
+	frame=tRBl, %フレームの指定
+	framesep=10pt, %フレームと中身（コード）の間隔
+	breaklines=true, %行が長くなった場合の改行
+	linewidth=12cm, %フレームの横幅
+	lineskip=-0.5ex, %行間の調整
+	tabsize=2, %Tabを何文字幅にするかの指定
+	numbers=left, %行番号を表示
+	numbersep=20pt
+}
+
+\title{第6回 プログラミング応用レポート}
+\author{15302114番　山下尚人}
+\date{提出日：2017年12月15日}
+
+\begin{document}
+\maketitle%タイトル
+
+\section{}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex103.c} 
+		\mbox{}\newline
+	\item 入力データファイル(exdata1.dat)
+		\lstinputlisting{exdata1.dat} 
+		\mbox{}\newline
+	\item 出力データファイル(out.dat)
+		\lstinputlisting{out.dat} 
+		\mbox{}\newline
+	\item 実行結果
+		\lstinputlisting{logdata1.log} 
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+			
+	\end{itemize}
+	\newpage	%改ページ
+
+\section{append(追記)の場合}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex104_1.c} 
+		\mbox{}\newline
+	\item 実行結果
+		\lstinputlisting{logdata2.log} 
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+	\end{itemize}
+	\newpage	%改ページ
+	
+
+\end{document}
