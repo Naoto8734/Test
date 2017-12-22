@@ -4,7 +4,7 @@
 int main (void){
 	FILE *fp;
 
-	if ( (fp=fopen("sample.dat","a")) == NULL){
+	if ( (fp=fopen("sample.dat","w")) == NULL){
 		printf("File not found. --- sample.dat\n");
 		exit(EXIT_FAILURE);
 	}

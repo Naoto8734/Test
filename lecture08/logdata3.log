@@ -1,0 +1,33 @@
+[t15302114@linux01 lecture08]$ ls
+a.out    ex104_1.c  exdata1.dat   logdata2.log  sample.dat
+ex103.c  ex104_2.c  logdata1.log  out.dat
+[t15302114@linux01 lecture08]$ cat sample.dat
+But, if you do your best,
+you will manage.
+But, if you do your best,
+you will manage.
+[t15302114@linux01 lecture08]$ ./a.out
+debug
+[t15302114@linux01 lecture08]$ ls
+a.out    ex104_1.c  exdata1.dat   logdata2.log  sample.dat
+ex103.c  ex104_2.c  logdata1.log  out.dat
+[t15302114@linux01 lecture08]$ cat sample.dat
+But, if you do your best,
+you will manage.
+[t15302114@linux01 lecture08]$ rm sample.dat
+[t15302114@linux01 lecture08]$ ls
+a.out    ex104_1.c  exdata1.dat   logdata2.log
+ex103.c  ex104_2.c  logdata1.log  out.dat
+[t15302114@linux01 lecture08]$ ./a.out
+debug
+[t15302114@linux01 lecture08]$ ls
+a.out    ex104_1.c  exdata1.dat   logdata2.log  sample.dat
+ex103.c  ex104_2.c  logdata1.log  out.dat
+[t15302114@linux01 lecture08]$ cat sample.dat
+But, if you do your best,
+you will manage.
+[t15302114@linux01 lecture08]$ ./a.out
+debug
+[t15302114@linux01 lecture08]$ cat sample.dat
+But, if you do your best,
+you will manage.
