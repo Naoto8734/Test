@@ -26,7 +26,7 @@
 \begin{document}
 \maketitle%タイトル
 
-\section{}
+\section{ex103.c}
 	\begin{itemize}
 	\item ソースコード
 		\lstinputlisting{ex103.c} 
@@ -34,18 +34,21 @@
 	\item 入力データファイル(exdata1.dat)
 		\lstinputlisting{exdata1.dat} 
 		\mbox{}\newline
-	\item 出力データファイル(out.dat)
-		\lstinputlisting{out.dat} 
-		\mbox{}\newline
 	\item 実行結果
 		\lstinputlisting{logdata1.log} 
 		\mbox{}\newline
+	\item 出力データファイル(out.dat)
+		\lstinputlisting{out.dat} 
+		\mbox{}\newline
 	\item 考察\mbox{}\\
-			
+		10〜13行目でexdata1.datを"r"モードでfpinに展開している。\\
+		15〜19行目でout.datを"w"モードでfpoutに展開している。\\
+		21〜25行目でfpinから1行ずつデータをvalに読み込み、valをfpoutに書き込んだ後、sumにvalを加算している。\\
+		27〜29行目でfpinのデータの合計と平均を標準出力に出力している。
 	\end{itemize}
-	\newpage	%改ページ
+	%\newpage	%改ページ
 
-\section{append(追記)の場合}
+\section{ex104：append(追記)の場合}
 	\begin{itemize}
 	\item ソースコード
 		\lstinputlisting{ex104_1.c} 
@@ -53,7 +56,29 @@
 	\item 実行結果
 		\lstinputlisting{logdata2.log} 
 		\mbox{}\newline
-	\item 考察\mbox{}\\
+	\item コードの考察\mbox{}\\
+		7〜10行目でsample.datを"a"モードでfpに展開している。\\
+		13,14行目でfpに文字列を書き込んでいる。
+	\item 実行結果の考察\mbox{}\\
+		1〜10行目でsample.datがない状態でコードを実行すると、文字列が１回書き込まれたsample.datが作られる。\\
+		11〜20行目でsample.datがある状態でコードを実行すると、文字列が末尾に新たに書き込まれる。
+	\end{itemize}
+	%\newpage	%改ページ
+
+\section{ex104：write(上書き)の場合}
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{ex104_2.c} 
+		\mbox{}\newline
+	\item 実行結果
+		\lstinputlisting{logdata3.log} 
+		\mbox{}\newline
+	\item コードの考察\mbox{}\\
+		2の追記の場合のコードから、7行目の"a"を"r"に変更した。
+	\item 実行結果の考察\mbox{}\\
+		1〜16行目でsample.datがある状態でコードを実行すると、元のデータが消え、新たに文字列が１回書き込まれる。\\
+		17〜20行目でsample.datを消している。\\
+		21〜28行目でsample.datがない状態でコードを実行すると、sample.datが新たに作成され、文字列１回が書き込まれる。
 	\end{itemize}
 	\newpage	%改ページ
 	
