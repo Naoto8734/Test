@@ -1,7 +1,15 @@
-#管理したくないファイル
+#cの実行ファイル
 *.out
+#Macのfinderメタデータ
 .DS_Store
+#一時データ
 *.swp
+#LaTex系の中間ファイル
+*.aux
+/report??/???_report.log
+/report??/????_report.log
+*.out
+*.synctex.gz
 
 #例外
 !.gitignore
