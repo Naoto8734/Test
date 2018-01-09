@@ -21,75 +21,50 @@
 
 \title{第8回 プログラミング応用レポート}
 \author{15302114番　山下尚人}
-\date{提出日：2017年12月29日}
+\date{提出日：2018年1月9日}
 
 \begin{document}
 \maketitle%タイトル
 
-\section{リストの登録(逆順)}
+\section*{課題}
 	\begin{itemize}
 	\item ソースコード
-		\lstinputlisting{list1.c} 
+		\lstinputlisting{list6.c} 
+		\mbox{}\newline
+	\item data1.dat
+		\lstinputlisting{data1.dat} 
+		\mbox{}\newline
+	\item data2.dat
+		\lstinputlisting{data2.dat} 
 		\mbox{}\newline
 	\item 実行結果
 		\begin{lstlisting}
-value=100
-value=20
 value=10
+value=9
+value=8
+value=7
+value=6
 value=5
+value=4
+value=3
 value=2
 value=1
 		\end{lstlisting}
-		\mbox{}\newline
+		\mbox{}\newpage
 	\item 考察\mbox{}\\
-		9〜21行目はset\_cell関数を定義している。
-		この関数は引数で指定したセルの一つ後ろに新しいセルを挿入する。
-		引数は構造体CELL型のポイント型変数dataと、整数型の変数valをとる。dataは新しく後ろに挿入するセルの一つ前のポインタであり、valは新たに挿入するセルの値となる。\\
-		11行目は構造体CELL型変数temp(ポインタ型)を、malloc関数で動的にメモリ領域を確保している。確保するメモリの大きさは構造体のCELL型の大きさとしている。
-		13〜16行目はメモリが確保できなかった場合（tempがNULLだった場合）について条件分岐され、プログラムは異常終了する。\\
-		18〜20行目はdataの後ろに新しいセルのtempを挿入している。\\
-		18行目はtempのメンバ変数nextに、dataのメンバ変数nextを代入している。
-		19行目はtempのメンバ変数valueに、valを代入している。
-		20行目はdataのメンバ変数nextに、tempのポインタ代入している。\\
+		set\_cell関数は54〜70行目に定義されている関数。リストの先頭のセルと値を引数に渡すと、連結リストの最後に新しいセルが追加される。\\
 		
-		23〜29行目はprint\_cell関数を定義している。
-		この関数は連結リストのセルの値を順番に標準出力に表示する。
-		引数は構造体CELL型のポイント型変数dataをとる。dataは表示するリストの先頭のセルとなる。\\
+		print\_cell関数は72〜78行目に定義されている関数。リストの先頭のセルを渡すと、標準出力にリストの値が順番に出力される。\\
 		
-		31〜46行目はmain関数で、set\_cell関数で連結リストを作成しprint\_cell関数で作成したリストを標準出力に表示している。\\
-		32〜34行目は連結リストの先頭のダミーデータである、構造体CELL型の変数dataを定義している。
-		36〜41行目はset\_cell関数により、連結リストを変数dataの後ろにセルを挿入している。
-		43行目はprint\_cell関数により、36〜41行目で作成したリストの値を標準出力に表示している。\\ \newpage	%改ページ
+		list\_concatenate関数は80〜93行目に定義されている関数。引数としてリストの先頭のセルを2つ渡すと(data0,data1)、data0のリストの最後にdata1のリストが連結する。\\
+		data1のリストがある時(83行目のif文)はdata0を連結し、無い時は何もしない。\\
+		data0のリストがある時(84行目のif文)は、85〜87行目のfor文でdata0のリストの最後のセルを探し、最後セルのnextをセルdata1のnextに書き換えて更新している。\\
+		data0のリストが無い時はセルdata0のnextをセルdata1のnextに書き換えて更新している。\\
 		
-		実行結果で36〜41行目の値と逆順に表示されるのは、print\_cell関数が原因だと考えた。\\
-		36〜41行目では第一引数にずっと作成したリストの先頭のセルである、dataを指定している。
-		print\_cell関数は第一引数で指定したセルの一つ後ろに新たなセルを挿入する。\\
-		よって、新たなセルは常に（ダミーデータを除いた）先頭に作成されるので、逆順にデータは並び、表示される。
+		13〜51行目はmain関数の処理。\\
+		17〜23行目ではdata1とdata2の2つのリストのダミーヘッダの作成を行っている。\\
+		24〜33行目でファイルdata1.datから値を読み込み、リストdata1にセットしている。\\
+		35〜44行目でファイルdata2.datから値を読み込み、リストdata2にセットしている。\\
+		47行目でdata1、data2をlist\_concatenate関数に渡して、リストを連結している。
 	\end{itemize}
-	
-
-\section{リストの登録(順番)}
-	\begin{itemize}
-	\item ソースコード
-		\lstinputlisting{list2.c} 
-		\mbox{}\newline
-	\item 実行結果
-		\begin{lstlisting}
-value=1
-value=2
-value=5
-value=10
-value=20
-value=100
-		\end{lstlisting}
-		\mbox{}\newline
-	\item 考察\mbox{}\\
-		このプログラムは逆順のプログラムに18〜20行目の3行を追記したものとなる。\\
-		これによりset\_cell関数は、第一引数に指定したセルの一番最後に新しいデータを作成することになった。\\
-		18行目はdataのメンバ変数nextに関数がNULLとなる（リストの一番最後のセルとなる）までwhile文でループする。
-		19行目はdataに、dataのメンバ変数のnextを代入している。\\
-		これにより22〜24行目でのdataは、第一引数で指定したセルの一番最後のセルになっており、新たなセルは一番最後に作成される。
-	\end{itemize}
-	%\newpage	%改ページ
-
 \end{document}

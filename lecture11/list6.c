@@ -80,14 +80,14 @@ void print_cell(CELL_t *data){
 void list_concatenate(CELL_t *data0, CELL_t *data1){
 	CELL_t *p, *prev;
 	
-	if (data0->next != NULL){
-		if (data1->next != NULL){
+	if (data1->next != NULL){
+		if (data0->next != NULL){
 			for (p = data0->next; p!=NULL; p=p->next){
 				prev=p;
 			}
 			prev->next = data1->next;
+		}else{
+			data0->next = data1->next;
 		}
-	}else{
-		data0->next = data1->next;
 	}
 }
