@@ -23,22 +23,22 @@ int main (void){
 
 	//printf("DEBUG:連結リストdata1にファイルから読み込み、セット\n");
 	if ((fp1=fopen("data1.dat","r")) == NULL){
-		printf("File not found. ---data1.dat¥n");
+		printf("File not found. ---data1.dat\n");
 		exit(EXIT_FAILURE);
 	}
 	while(EOF != fscanf(fp1, "%d", &value)){
-		printf("DEBUG:data1.dat value=%d\n",value);
+		//printf("DEBUG:data1.dat value=%d\n",value);
 		set_cell(&data1, value);
 	}
 	fclose(fp1);
 
 	//printf("DEBUG:連結リストdata2にファイルから読み込み、セット\n");
 	if ((fp2=fopen("data2.dat","r")) == NULL){
-		printf("File not found. ---data1.dat¥n");
+		printf("File not found. ---data2.dat\n");
 		exit(EXIT_FAILURE);
 	}
 	while(EOF != fscanf(fp2, "%d", &value)){
-		printf("DEBUG:data2.dat value=%d\n",value);
+		//printf("DEBUG:data2.dat value=%d\n",value);
 		set_cell(&data2, value);
 	}
 	fclose(fp2);

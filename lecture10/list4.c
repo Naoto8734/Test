@@ -40,7 +40,7 @@ int main (void){
 	FILE *fp;
 
 	if ((fp=fopen("data2.dat","w")) == NULL){
-		printf("File not found. ---data2.dat¥n");
+		printf("File not found. ---data2.dat\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -49,7 +49,7 @@ int main (void){
 			continue;
 		}
 		set_cell(&data,i);
-		fprintf(fp, "%d¥n", i);
+		fprintf(fp, "%d\n", i);
 	}
 
 	print_cell(&data);
