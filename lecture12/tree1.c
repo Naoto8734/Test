@@ -21,11 +21,35 @@ int main(void){
 	
 	insertNode(root,8);
 	printf("***** TREE:add 8 *****\n");
-	//printTreee(root);
+	printTree(root);
 	
 	insertNode(root,6);
 	printf("***** TREE:add 6 *****\n");
-	//printTreee(root);
+	printTree(root);
+	
+	insertNode(root,5);
+	printf("***** TREE:add 5 *****\n");
+	printTree(root);
+	
+	insertNode(root,4);
+	printf("***** TREE:add 4 *****\n");
+	printTree(root);
+	
+	insertNode(root,9);
+	printf("***** TREE:add 9 *****\n");
+	printTree(root);
+	
+	insertNode(root,2);
+	printf("***** TREE:add 2 *****\n");
+	printTree(root);
+	
+	insertNode(root,7);
+	printf("***** TREE:add 7 *****\n");
+	printTree(root);
+	
+	insertNode(root,1);
+	printf("***** TREE:add 1 *****\n");
+	printTree(root);
 
 	return EXIT_SUCCESS;
 }
@@ -53,11 +77,29 @@ node_t *insertNode(node_t *n, int x){
 			n->right = insertNode(n->right, x);
 		} else {
 			// x == n->label
-			printf("ERROR:登録済み\n");
+			printf("ERROR:Registered\n");
 		}
 	}
 	return n;
 }
 
 void printTree(node_t *n){
+	static int level = 0;
+	int i;
+	level++;
+	
+		if (n->right != NULL) {
+		printTree(n->right);
+	}
+	
+	for (i=1; i<level; i++) {
+		printf("  ");
+	}
+	printf("%d\n",n->label);
+	
+	if (n->left !=NULL) {
+		printTree(n->left);
+	}
+	
+	level--;
 }
