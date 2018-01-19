@@ -49,7 +49,7 @@ int main (void){
 			continue;
 		}
 		set_cell(&data,i);
-		fprintf(fp, "%d¥n", i);
+		fprintf(fp, "%d\n", i);
 	}
 
 	print_cell(&data);
