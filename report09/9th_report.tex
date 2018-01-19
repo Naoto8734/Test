@@ -1,0 +1,138 @@
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{otf}	%日本語化
+\usepackage[dvipdfmx]{hyperref}	%ハイパーリンク
+\usepackage{pxjahyper}	%ハイパーリンク
+\usepackage{bm}	%数式太字
+\usepackage{listings}	%プログラム埋め込み
+
+\lstset{
+	language={C}, %プログラム言語
+	basicstyle={\ttfamily\small}, %書体の指定
+	frame=tRBl, %フレームの指定
+	framesep=10pt, %フレームと中身（コード）の間隔
+	breaklines=true, %行が長くなった場合の改行
+	linewidth=12cm, %フレームの横幅
+	lineskip=-0.5ex, %行間の調整
+	tabsize=2, %Tabを何文字幅にするかの指定
+	numbers=left, %行番号を表示
+	numbersep=20pt
+}
+
+\title{第9回 プログラミング応用レポート}
+\author{15302114番　山下尚人}
+\date{提出日：2018年1月9日}
+
+\begin{document}
+\maketitle%タイトル
+
+\section*{(1)}
+	ファイルにセットした値を読み込み，連結リストに値をセットする例
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{list3.c} 
+		\mbox{}\newline
+	\item 読み込まれたデータ
+		\lstinputlisting{data1.dat} 
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+value=1
+value=2
+value=5
+value=10
+value=20
+value=100
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		9〜25行目はset\_cell関数を定義している。
+		この関数は引数で指定したセルの一つ後ろに新しいセルを挿入する。
+		引数は構造体CELL型のポイント型変数dataと、整数型の変数valをとる。dataは新しく後ろに挿入するセルの一つ前のポインタであり、valは新たに挿入するセルの値となる。\\
+		
+		27〜33行目はprint\_cell関数を定義している。
+		この関数は連結リストのセルの値を順番に標準出力に表示する。
+		引数は構造体CELL型のポイント型変数dataをとる。dataは表示するリストの先頭のセルとなる。\\
+		
+		35〜55行目はmain関数で、ファイルから読み込んだ値からset\_cell関数で連結リストを作成。print\_cell関数で作成したリストを標準出力に表示している。\\
+		36〜38行目は連結リストの先頭のダミーデータである、構造体CELL型の変数dataを定義している。\\
+		42〜45行目はファイルを読み込みモードで開き、ファイルが開けない場合は異常終了している。\\
+		47〜49行目はfscanf関数によりファイルから値を読み込み、set\_cell関数でセルを作成。それをwhile文でファイルの終了まで行っている。\\
+		43行目はprint\_cell関数により、47〜49行目で作成したリストの値を標準出力に表示している。\\ 
+	\end{itemize}
+	
+
+\section*{(2)}
+	ファイルに``10,9,8,7,6,4,3,2,''の値（5が抜けている）を順に書き込む
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{list4.c} 
+		\mbox{}\newline
+	\item 実行結果
+		\begin{lstlisting}
+value=10
+value=9
+value=8
+value=7
+value=6
+value=4
+value=3
+value=2
+value=1
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 書き込まれたデータ
+		\lstinputlisting{data2.dat} 
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		課題(1)の関数の定義をそのままに、42行目以降のmain関数での処理を変更したプログラム。\\
+		``10,9,8,7,6,4,3,2,''という連結リストを作成し、ファイルに値を書き込んでいる。
+		42〜45行目でファイルを書き込みモードで開いている。\\
+		47〜53行目でfor文により連番を作ってset\_cell関数でリストを作成し、fprintf関数でファイルに書き込んでいる。
+		48〜50行目のif文による条件分岐で、5だけを飛ばしている。
+	\end{itemize}
+
+\section*{(3)}
+	連結リストにおい``5''を4と6の間に挿入する
+	\begin{itemize}
+	\item ソースコード
+		\lstinputlisting{list5.c} 
+		\mbox{}\newline
+	\item 読み込まれたデータ
+		\lstinputlisting{data2.dat} 
+		\mbox{}\newline \\
+	\item 実行結果
+		\begin{lstlisting}
+Before
+value=10
+value=9
+value=8
+value=7
+value=6
+value=4
+value=3
+value=2
+value=1
+After
+value=10
+value=9
+value=8
+value=7
+value=6
+value=5
+value=4
+value=3
+value=2
+value=1
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 考察\mbox{}\\
+		課題(1)のプログラムから、set\_cell関数の定義を少し変更した。\\
+		渡されたセル(連結リスト)の最後のセルの後ろに新しいセルを挿入するのではなく、渡されたセルの直後にセルを挿入する関数とした。\\
+		これにより44行目でファイルから値を読み込み連結リストを作る時、set\_cell関数に渡すセルを連結リスト最後から一つ前のセルとしている。\\
+		46行目まででファイルから値を読み込み、5が抜けたデータを作成した。
+		52〜57行目で6の後に5のセルを挿入している。
+	\end{itemize}
+	%\newpage	%改ページ
+
+\end{document}

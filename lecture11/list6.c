@@ -23,22 +23,22 @@ int main (void){
 
 	//printf("DEBUG:連結リストdata1にファイルから読み込み、セット\n");
 	if ((fp1=fopen("data1.dat","r")) == NULL){
-		printf("File not found. ---data1.dat¥n");
+		printf("File not found. ---data1.dat\n");
 		exit(EXIT_FAILURE);
 	}
 	while(EOF != fscanf(fp1, "%d", &value)){
-		printf("DEBUG:data1.dat value=%d\n",value);
+		//printf("DEBUG:data1.dat value=%d\n",value);
 		set_cell(&data1, value);
 	}
 	fclose(fp1);
 
 	//printf("DEBUG:連結リストdata2にファイルから読み込み、セット\n");
 	if ((fp2=fopen("data2.dat","r")) == NULL){
-		printf("File not found. ---data1.dat¥n");
+		printf("File not found. ---data2.dat\n");
 		exit(EXIT_FAILURE);
 	}
 	while(EOF != fscanf(fp2, "%d", &value)){
-		printf("DEBUG:data2.dat value=%d\n",value);
+		//printf("DEBUG:data2.dat value=%d\n",value);
 		set_cell(&data2, value);
 	}
 	fclose(fp2);
@@ -80,14 +80,14 @@ void print_cell(CELL_t *data){
 void list_concatenate(CELL_t *data0, CELL_t *data1){
 	CELL_t *p, *prev;
 	
-	if (data0->next != NULL){
-		if (data1->next != NULL){
+	if (data1->next != NULL){
+		if (data0->next != NULL){
 			for (p = data0->next; p!=NULL; p=p->next){
 				prev=p;
 			}
 			prev->next = data1->next;
+		}else{
+			data0->next = data1->next;
 		}
-	}else{
-		data0->next = data1->next;
 	}
 }

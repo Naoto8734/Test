@@ -15,10 +15,6 @@ void set_cell(struct CELL *data, int val){
 		exit(EXIT_FAILURE);
 	}
 
-	while(data->next!=NULL){
-		data = data->next;
-	}
-
 	temp->next = data->next;
 	temp->value = val;
 	data->next = temp;
@@ -33,25 +29,32 @@ void print_cell(struct CELL *data){
 }
 
 int main (void){
-	struct CELL data;
+	struct CELL data, *p;
 	data.next = NULL;
 	data.value = 0;
-	int i;
+	int value;
 	FILE *fp;
 
-	if ((fp=fopen("data2.dat","w")) == NULL){
-		printf("File not found. ---data2.dat¥n");
+	if ((fp=fopen("data2.dat","r")) == NULL){
+		printf("File not found. ---data2.dat\n");
 		exit(EXIT_FAILURE);
 	}
 
-	for(i=10; i>0; i--){
-		if(i==5){
-			continue;
-		}
-		set_cell(&data,i);
-		fprintf(fp, "%d¥n", i);
+	while(fscanf(fp, "%d", &value) != EOF){
+		for(p=&data; p->next!=NULL; p=p->next);
+		set_cell(p,value);
 	}
 
+	printf("Before\n");
+	print_cell(&data);
+
+	printf("After\n");
+	for (p=data.next; p!=NULL; p=p->next){
+		if (p->value == 6){
+			set_cell(p,5);
+			break;
+		}
+	}
 	print_cell(&data);
 	fclose(fp);
 

@@ -40,7 +40,7 @@ int main (void){
 	FILE *fp;
 
 	if ((fp=fopen("data1.dat","r")) == NULL){
-		printf("File not found. ---data1.dat¥n");
+		printf("File not found. ---data1.dat\n");
 		exit(EXIT_FAILURE);
 	}
 	
