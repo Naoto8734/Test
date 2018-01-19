@@ -88,7 +88,7 @@ void printTree(node_t *n){
 	int i;
 	level++;
 	
-		if (n->right != NULL) {
+	if (n->right != NULL) {
 		printTree(n->right);
 	}
 	

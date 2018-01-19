@@ -4,14 +4,19 @@
 \usepackage[dvipdfmx]{hyperref}	%ハイパーリンク
 \usepackage{pxjahyper}	%ハイパーリンク
 \usepackage{bm}	%数式太字
-\usepackage{listings}	%プログラム埋め込み
+\usepackage[dvipdfmx]{graphicx,xcolor} %jpeg/pngの挿入
+\usepackage{tikz} %図形の直接描画
+\usepackage{listings,jlisting}  %コードの挿入
 
 \lstset{
 	language={C}, %プログラム言語
-	basicstyle={\ttfamily\small}, %書体の指定
+	%basicstyle={\ttfamily\small}, %書体の指定
+	basicstyle = \ttfamily\scriptsize, 	%標準の書体
+	keywordstyle = {\color[cmyk]{0,1,0,0}},%キーワード(int, ifなど)の書体
+	commentstyle = {\color[cmyk]{1,0.4,1,0}},%コメントの書体
 	frame=tRBl, %フレームの指定
 	framesep=10pt, %フレームと中身（コード）の間隔
-	breaklines=true, %行が長くなった場合の改行
+	breaklines=false, %行が長くなった場合の改行
 	linewidth=12cm, %フレームの横幅
 	lineskip=-0.5ex, %行間の調整
 	tabsize=2, %Tabを何文字幅にするかの指定
@@ -19,9 +24,9 @@
 	numbersep=20pt
 }
 
-\title{第10回 プログラミング応用レポート}
+\title{第11回 プログラミング応用レポート}
 \author{15302114番　山下尚人}
-\date{提出日：2018年1月9日}
+\date{提出日：2018年1月25日}
 
 \begin{document}
 \maketitle%タイトル
@@ -29,42 +34,76 @@
 \section*{課題}
 	\begin{itemize}
 	\item ソースコード
-		\lstinputlisting{list6.c} 
-		\mbox{}\newline
-	\item data1.dat
-		\lstinputlisting{data1.dat} 
-		\mbox{}\newline
-	\item data2.dat
-		\lstinputlisting{data2.dat} 
+		\lstinputlisting{tree1.c} 
 		\mbox{}\newline
 	\item 実行結果
 		\begin{lstlisting}
-value=10
-value=9
-value=8
-value=7
-value=6
-value=5
-value=4
-value=3
-value=2
-value=1
+***** TREE:add 8 *****
+  8
+3
+***** TREE:add 6 *****
+  8
+    6
+3
+***** TREE:add 5 *****
+  8
+    6
+      5
+3
+***** TREE:add 4 *****
+  8
+    6
+      5
+        4
+3
+***** TREE:add 9 *****
+    9
+  8
+    6
+      5
+        4
+3
+***** TREE:add 2 *****
+    9
+  8
+    6
+      5
+        4
+3
+  2
+***** TREE:add 7 *****
+    9
+  8
+      7
+    6
+      5
+        4
+3
+  2
+***** TREE:add 1 *****
+    9
+  8
+      7
+    6
+      5
+        4
+3
+  2
+    1
 		\end{lstlisting}
-		\mbox{}\newpage
-	\item 考察\mbox{}\\
-		set\_cell関数は54〜70行目に定義されている関数。リストの先頭のセルと値を引数に渡すと、連結リストの最後に新しいセルが追加される。\\
+		\mbox{}\\
+
+	\item プリントアウト関数の動作説明\\
+		画面の垂直方向(行)の順番は、ソースの92,101行目の再帰呼び出しと98行目のprintf関数により決まる。\\
+		右側のノードの再帰呼び出し、ノードの画面出力、左側のノードの再帰呼び出しの順で処理している。\\
+		よって、「そのノードの右の子の末端へ移動し出力。一つ親のノードへ移動して出力し、ノードの左の子へ移動。」を繰り返している。\\
+		91,101行目のif文による条件分岐は再帰呼び出しを終わらせるため。\\
 		
-		print\_cell関数は72〜78行目に定義されている関数。リストの先頭のセルを渡すと、標準出力にリストの値が順番に出力される。\\
 		
-		list\_concatenate関数は80〜93行目に定義されている関数。引数としてリストの先頭のセルを2つ渡すと(data0,data1)、data0のリストの最後にdata1のリストが連結する。\\
-		data1のリストがある時(83行目のif文)はdata0を連結し、無い時は何もしない。\\
-		data0のリストがある時(84行目のif文)は、85〜87行目のfor文でdata0のリストの最後のセルを探し、最後セルのnextをセルdata1のnextに書き換えて更新している。\\
-		data0のリストが無い時はセルdata0のnextをセルdata1のnextに書き換えて更新している。\\
-		
-		13〜51行目はmain関数の処理。\\
-		17〜23行目ではdata1とdata2の2つのリストのダミーヘッダの作成を行っている。\\
-		24〜33行目でファイルdata1.datから値を読み込み、リストdata1にセットしている。\\
-		35〜44行目でファイルdata2.datから値を読み込み、リストdata2にセットしている。\\
-		47行目でdata1、data2をlist\_concatenate関数に渡して、リストを連結している。
+		画面の水平方向(列)の空白の数は、ソースの89,104行目の変数levelの増減により処理し、95〜97行目のfor文により実際に出力している。\\
+		printTree関数内のローカル変数levelは、static装飾子によりprintTree関数が呼ばれるたびに初期化されず、値が保持される。\\
+		printTree関数は92,101行目で再帰呼び出しされているので、levelが1増えた後に再帰呼び出しされ、呼び出しが終わるごとにlevelが1減っていく。\\
+		これにより、95〜97行目でノードのレベルの数だけ空白を画面出力した後、98行目でlabelを出力して改行している。
+			
 	\end{itemize}
 \end{document}
