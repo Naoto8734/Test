@@ -92,14 +92,10 @@ void printTree(node_t *n){
 		printTree(n->right);
 	}
 	
-	for (i=1; i<level; i++) {
-		printf("  ");
-	}
-	printf("%d\n",n->label);
+	printf("%*c [%d]\n", 5*level, ' ', n->label);
 	
-	if (n->left !=NULL) {
+	if (n->left != NULL) {
 		printTree(n->left);
 	}
-	
 	level--;
 }
