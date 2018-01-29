@@ -1,0 +1,100 @@
+\documentclass[a4paper]{jsarticle}
+
+\usepackage{otf}	%日本語化
+\usepackage[dvipdfmx]{xcolor} %色
+\usepackage{listings}	%プログラム埋め込み
+
+\lstset{
+	language={C}, %プログラム言語
+	basicstyle = \ttfamily\scriptsize, 	%標準の書体
+	keywordstyle = {\color[cmyk]{0,1,0,0}},%キーワード(int, ifなど)の書体
+	commentstyle = {\color[cmyk]{1,0.4,1,0}},%コメントの書体
+	frame=tRBl, %フレームの指定
+	framesep=10pt, %フレームと中身（コード）の間隔
+	breaklines=false, %行が長くなった場合の改行
+	linewidth=15cm, %フレームの横幅
+	lineskip=-0.5ex, %行間の調整
+	tabsize=2, %Tabを何文字幅にするかの指定
+	numbers=left, %行番号を表示
+	numbersep=20pt,
+ 	captionpos = b, %キャプションの場所("tb"ならば上下両方に記載)
+	xleftmargin=2truecm,%左側の余白
+}
+
+
+\title{第12回 プログラミング応用レポート}
+\author{15302114番　山下尚人}
+\date{提出日：20年1月30日}
+
+\begin{document}
+\maketitle%タイトル
+
+\section*{課題}
+	\begin{itemize}
+	\item 関数inorderのソースコード
+		\begin{lstlisting}
+void inorder(struct node *p) {
+	if (p==NULL)
+		return;
+	inorder(p->left);
+	printf("節%cに立ち寄りました\n", n2c(p->label));
+	inorder(p->right);
+}
+		\end{lstlisting}
+		\mbox{}\newline
+	\item 関数postorderのソースコード
+		\begin{lstlisting}
+void postorder(struct node *p) {
+	if (p==NULL)
+		return;
+	postorder(p->left);
+	postorder(p->right);
+	printf("節%cに立ち寄りました\n", n2c(p->label));
+}
+		\end{lstlisting}
+		\mbox{}\newpage
+	\item 実行結果
+		\begin{lstlisting}
+           [H]
+      [A]
+                     [F]
+                [D]
+                     [E]
+                          [G]
+           [B]
+                [C]
+
+---preorder---
+節Aに立ち寄りました
+節Bに立ち寄りました
+節Cに立ち寄りました
+節Dに立ち寄りました
+節Eに立ち寄りました
+節Gに立ち寄りました
+節Fに立ち寄りました
+節Hに立ち寄りました
+
+---inorder---
+節Cに立ち寄りました
+節Bに立ち寄りました
+節Gに立ち寄りました
+節Eに立ち寄りました
+節Dに立ち寄りました
+節Fに立ち寄りました
+節Aに立ち寄りました
+節Hに立ち寄りました
+
+---postorder---
+節Cに立ち寄りました
+節Gに立ち寄りました
+節Eに立ち寄りました
+節Fに立ち寄りました
+節Dに立ち寄りました
+節Bに立ち寄りました
+節Hに立ち寄りました
+節Aに立ち寄りました
+		\end{lstlisting}
+		\mbox{}
+		
+	\end{itemize}
+\end{document}
