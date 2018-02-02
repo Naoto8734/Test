@@ -4,8 +4,8 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-data1 = np.loadtxt('data1.csv', delimiter=',', skiprows=1)
-data2 = np.loadtxt('data2.csv', delimiter=',', skiprows=1)
+data1 = np.loadtxt('randam_10average_bubbleSort.csv', delimiter=',')
+data2 = np.loadtxt('worst_bubbleSort.csv', delimiter=',')
 data1 = data1.T
 data2 = data2.T
 
